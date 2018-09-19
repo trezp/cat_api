@@ -1,0 +1,25 @@
+{
+ "cats" : [
+    {
+      "id": 0,
+      "name": "Captain Sharpwhiskers",
+      "type": "American Shorthair",
+      "age": 9,
+      "votes": 0 
+    },
+    {
+      "id": 1,
+      "name": "Rascal",
+      "type": "American Shorthair",
+      "age": 7,
+      "votes": 0
+    },
+    {
+      "id": 2,
+      "name": "Mr. Bigface",
+      "type": "black",
+      "age": 3,
+      "votes": 0
+    }
+  ]
+}

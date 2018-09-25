@@ -18,56 +18,51 @@ function save(){
 }
 
 async function getAll(){
-  return data.cats;
+  return data.records;
 }
 
 async function getOne(id){
-  return data.cats.find(cat => cat.id == id);
+  return data.records.find(record => record.id == id);
+}
+
+async function getRandom(arr){
+  const ids = [];
+  const randNum = Math.floor(Math.random() * data.records.length);
+  arr.forEach(record => ids.push(record.id));
+  console.log(arr[randNum])
+  return arr[randNum];
 }
 
 async function create(body) {
   const record = {
     id: generateRandomId(),
-    name: body.name,
-    type: body.type,
-    age: body.age,
-    votes: 0 
+    quote: body.quote,
+    author: body.author,
+    year: body.year
   }
-  data.cats.push(record);
+  data.records.push(record);
   await save(); 
   return record; 
 }
 
 async function edit(record, body){
-  record.name = body.name;
-  record.type = body.type;
-  record.age = body.age;
-  return save();
+  record.quote = body.quote || record.quote;
+  record.author = body.author || record.author;
+  record.year = body.year || record.year;
+  await save();
 }
 
-async function deleteOne(record){
-  data.cats = data.cats.filter(cat => cat.id != record.id);
+async function deleteRecord(record){
+  data.records = data.records.filter(item => item.id != record.id);
+  console.log(data.records)
   return save();
 }
-
-async function voteUp(answer){
-  answer.votes += 1; 
-  return save();
-}
-
-async function voteDown(answer){
-  answer.votes -= 1; 
-  return save();
-}
-
-
 
 module.exports = {
   getAll,
   getOne, 
   create, 
   edit, 
-  deleteOne,
-  voteUp,
-  voteDown,
+  deleteRecord,
+  getRandom
 }

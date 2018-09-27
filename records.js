@@ -26,10 +26,7 @@ async function getOne(id){
 }
 
 async function getRandom(arr){
-  const ids = [];
   const randNum = Math.floor(Math.random() * data.records.length);
-  arr.forEach(record => ids.push(record.id));
-  console.log(arr[randNum])
   return arr[randNum];
 }
 
